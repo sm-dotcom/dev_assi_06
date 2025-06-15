@@ -1,0 +1,65 @@
+# Byte-compiled / compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+
+# Python environment files
+.env
+.env.*
+
+# Pip cache and logs
+pip-log.txt
+pip-delete-this-directory.txt
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE and editor configs
+.vscode/
+.idea/
+
+# Jenkins-specific
+workspace/
+.last_success
+.last_failure
+
+# Testing files and coverage
+htmlcov/
+coverage.xml
+*.cover
+.pytest_cache/
+.cache
+nosetests.xml
+test-results/
+
+# Docker
+**/__pycache__/
+*.tar
+*.img
+*.container
+.dockerignore
+docker-compose.override.yml
+docker-compose.debug.yml
+*.log
+docker-volume/
+docker-output/
+*.pid
+
+# Docker build artifacts
+*.db
+*.sqlite3
+*.sock
+
+# Backup or temp files
+*.bak
+*.swp
+*~
+
+# Secret files
+secrets.*
