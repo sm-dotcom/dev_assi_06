@@ -13,3 +13,4 @@ email_pass = os.getenv("EMAIL_PASS", "no-pass")
 
 print(f"Hello, {name}!")
 print(f"Using email credentials: {email_user} / {len(email_pass) * '*'}")
+# test sonar update
