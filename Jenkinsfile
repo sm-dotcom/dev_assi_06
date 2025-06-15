@@ -19,7 +19,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo 'Checking out code...'
-                git url: 'https://github.com/user/repo1.git', branch: 'main'
+                git url: 'https://github.com/sm-dotcom/dev_assi_06.git', branch: 'main'
             }
         }
 
