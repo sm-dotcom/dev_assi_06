@@ -10,9 +10,8 @@ pipeline {
     }
 
     environment {
-        // Optional fallback recipient
         DEFAULT_RECIPIENT = 'sarah.mahmood@camp1.tkxel.com'
-        API_KEY = 'your_api_key_here' // Or use Jenkins credentials for this too
+        API_KEY = 'your_api_key_here'
     }
 
     stages {
@@ -20,6 +19,21 @@ pipeline {
             steps {
                 echo 'Checking out code...'
                 git url: 'https://github.com/sm-dotcom/dev_assi_06.git', branch: 'main'
+            }
+        }
+
+        stage('SonarQube Scan') {
+            environment {
+                SONAR_TOKEN = credentials('sonar-token')
+            }
+            steps {
+                echo 'Running SonarQube scan...'
+                withSonarQubeEnv('MySonar') {
+                    sh '''
+                    sonar-scanner \
+                      -Dsonar.login=$SONAR_TOKEN
+                    '''
+                }
             }
         }
 
