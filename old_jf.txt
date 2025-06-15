@@ -1,9 +1,7 @@
 pipeline {
     agent {
-        docker {
-            image 'smdotcom/jenkins-python-sonar'
+        node {
             label 'docker-agent-python'
-            args '-u root:root'
         }
     }
 
@@ -29,7 +27,7 @@ pipeline {
                 SONAR_TOKEN = credentials('sonar-token')
             }
             steps {
-                echo 'Running SonarQube scan with pre-installed SonarScanner...'
+                echo 'Running SonarQube scan...'
                 withSonarQubeEnv('MySonar') {
                     sh '''
                     sonar-scanner \
