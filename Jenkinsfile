@@ -1,19 +1,18 @@
 pipeline {
-    agent {
-        docker {
-            image 'smdotcom/jenkins-python-sonar'
-            label 'docker-agent-python'
-            args '-u root:root'
-        }
-    }
+    agent any
 
-    triggers {
-        githubPush()
+    tools {
+        sonarQubeScanner 'SonarScanner' // Name as defined in Manage Jenkins > Global Tool Configuration
     }
 
     environment {
         DEFAULT_RECIPIENT = 'sarah.mahmood@camp1.tkxel.com'
         API_KEY = 'your_api_key_here'
+        SONAR_TOKEN = credentials('sonar-token-1') // Secret text from Jenkins credentials
+    }
+
+    triggers {
+        githubPush()
     }
 
     stages {
@@ -25,14 +24,14 @@ pipeline {
         }
 
         stage('SonarQube Scan') {
-            environment {
-                SONAR_TOKEN = credentials('sonar-token')
-            }
             steps {
-                echo 'Running SonarQube scan with pre-installed SonarScanner...'
-                withSonarQubeEnv('MySonar') {
+                echo 'Running SonarQube scan with Jenkins SonarScanner...'
+                withSonarQubeEnv('MySonar') { // Name from "Configure System"
                     sh '''
                     sonar-scanner \
+                      -Dsonar.projectKey=my-python-app-1 \
+                      -Dsonar.sources=. \
+                      -Dsonar.host.url=$SONAR_HOST_URL \
                       -Dsonar.login=$SONAR_TOKEN
                     '''
                 }
@@ -93,3 +92,4 @@ pipeline {
         }
     }
 }
+
