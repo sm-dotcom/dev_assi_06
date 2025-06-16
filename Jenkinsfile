@@ -1,9 +1,9 @@
 pipeline {
     agent any
 
-    tools {
-        sonarQubeScanner 'SonarScanner' // Name as defined in Manage Jenkins > Global Tool Configuration
-    }
+    // tools {
+    //     sonarQubeScanner 'SonarScanner' // Name as defined in Manage Jenkins > Global Tool Configuration
+    // }
 
     environment {
         DEFAULT_RECIPIENT = 'sarah.mahmood@camp1.tkxel.com'
