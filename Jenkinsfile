@@ -7,7 +7,7 @@ pipeline {
 
     environment {
         DEFAULT_RECIPIENT = 'sarah.mahmood@camp1.tkxel.com'
-        API_KEY = 'your_api_key_here'
+        // API_KEY = 'your_api_key_here'
         SONAR_TOKEN = credentials('sonar-token-1') // Secret text from Jenkins credentials
     }
 
