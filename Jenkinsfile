@@ -70,6 +70,19 @@ pipeline {
                 echo 'Delivery step (placeholder)...'
             }
         }
+
+
+        stage('Docker Build and Deploy') {
+            steps {
+                sh '''
+                docker build -t my-python-app .
+                docker save my-python-app | gzip > my-python-app.tar.gz
+                scp my-python-app.tar.gz user@remote_ip:/tmp/
+                ssh user@remote_ip 'gunzip -c /tmp/my-python-app.tar.gz | docker load && docker run --rm my-python-app'
+                '''
+                }
+        }
+
     }
 
     post {
