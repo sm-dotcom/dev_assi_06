@@ -4,7 +4,7 @@ pipeline {
     environment {
         // Replace these with actual values
         REPO1_URL = 'https://github.com/your-org/repo1.git'
-        REPO2_URL = 'https://github.com/your-org/repo2.git'
+        //REPO2_URL = 'https://github.com/your-org/repo2.git'
         CREDENTIALS_ID_1 = 'creds-repo1'
         CREDENTIALS_ID_2 = 'creds-repo2'
         SONARQUBE_ENV = 'My Sonar Server'
